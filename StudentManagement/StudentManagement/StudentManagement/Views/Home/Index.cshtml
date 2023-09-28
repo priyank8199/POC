@@ -1,0 +1,60 @@
+﻿@model IEnumerable<StudentManagement.Models.Student>
+
+@{
+    ViewData["Title"] = "Students Details";
+}
+
+<h1>Students</h1>
+
+<p>
+    <a asp-action="Create" >Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Studname)
+            </th> 
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subjects)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fees)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.Studname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subjects)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fees)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Studid">Edit</a> ||
+                <a asp-action="Delete" asp-route-id="@item.Studid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

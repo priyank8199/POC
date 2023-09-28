@@ -1,0 +1,66 @@
+﻿@model StudentManagement.Models.Student
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Student</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-action="Edit">
+            <input name="Studid" asp-for="Studid" hidden />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+               <b> <label asp-for="Studname" class="control-label"></label></b>
+                <input asp-for="Studname" class="form-control" />
+                <span asp-validation-for="Studname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <input asp-for="Gender" type="radio" class="form-control" name="Gender" value="M" />Male<br />
+                <input asp-for="Gender" type="radio" class="form-control" name="Gender" value="F" />Female
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <select name="City">
+                    <option value="" selected disabled>Select City</option>
+                    <option value="Ahmedabad">Ahmedabad</option>
+                    <option value="Rajkot">Rajkot</option>
+                    <option value="Surat">Surat</option>
+                    <option value="Vadodara">Vadodara</option>
+                </select>
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subjects" class="control-label"></label><br />
+                 <input type="checkbox" name="Subjects" value="Java">
+                 <label> Java</label><br>
+                 <input type="checkbox" name="Subjects" value=".Net">
+                 <label> .Net</label><br>
+                 <input type="checkbox" name="Subjects" value="Python">
+                 <label> Python</label><br><br>
+                 <span asp-validation-for="Subjects" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Fees" class="control-label"></label>
+                <input asp-for="Fees" class="form-control" />
+                <span asp-validation-for="Fees" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
