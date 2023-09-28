@@ -1,0 +1,96 @@
+﻿@model StudentManagement.Models.Student
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+@*@@{
+    List<CheckBoxList> items = new List<CheckBoxList>()
+{
+        new CheckBoxList { Id= "cb1", Name = "first" },
+        new CheckBoxList { Id= "cb2", Name = "second"  },
+        new CheckBoxList { Id= "cb3", Name = "third" },
+    };
+}*@
+
+<h1>Create</h1>
+
+<h4>Student</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*@<div class="form-group">
+                    <label asp-for="Studid" class="control-label"></label>
+                    <input asp-for="Studid" class="form-control" />
+                    <span asp-validation-for="Studid" class="text-danger"></span>
+                </div>*@
+            <div class="form-group">
+                <label asp-for="Studname" class="control-label"></label>
+                <input asp-for="Studname" class="form-control" />
+                <span asp-validation-for="Studname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <input asp-for="Gender" type="radio" class="form-control" name="Gender" value="M" />Male
+                <input asp-for="Gender" type="radio" class="form-control" name="Gender" value="F" />Female
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <select name="City">
+                    <option value="" selected disabled>Select City</option>
+                    <option value="Ahmedabad">Ahmedabad</option>
+                    <option value="Rajkot">Rajkot</option>
+                    <option value="Surat">Surat</option>
+                    <option value="Vadodara">Vadodara</option>
+                </select>
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                
+                      <label asp-for="Subjects" class="control-label"></label><br />
+                      <input type="checkbox" name="Subjects" value="Java">
+                      <label> Java</label><br>
+                      <input  type="checkbox" name="Subjects" value=".Net">
+                      <label> .Net</label><br>
+                      <input  type="checkbox" name="Subjects" value="Python">
+                      <label> Python</label><br><br>
+                      <span asp-validation-for="Subjects" class="text-danger"></span>
+
+                    @*  @for (int i=0;i<Model.Subjects.Capacity;i++)
+                      {
+                          <tr>
+                              <td>
+                                  @Html.HiddenFor(x => Model.Subjects[i].Id)
+                                  @Html.DisplayFor(it => Model.Subjects[i].Name)
+                              </td>
+                              <td>
+                                  @Html.CheckBoxFor(it => Model.Subjects[i].IsChecked)
+                              </td>
+
+                          </tr>
+                      }
+                          </table>*@
+            </div>
+            <div class="form-group">
+                <label asp-for="Fees" class="control-label"></label>
+                <input asp-for="Fees" class="form-control" />
+                <span asp-validation-for="Fees" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
